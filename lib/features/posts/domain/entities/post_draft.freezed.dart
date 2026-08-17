@@ -19,8 +19,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$PostDraft {
   String get title => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
-
-  /// A API exige um autor; sem login, usamos um usuário fixo.
   int get userId => throw _privateConstructorUsedError;
 
   /// Create a copy of PostDraft
@@ -139,8 +137,6 @@ class _$PostDraftImpl extends _PostDraft {
   final String title;
   @override
   final String body;
-
-  /// A API exige um autor; sem login, usamos um usuário fixo.
   @override
   @JsonKey()
   final int userId;
@@ -184,8 +180,6 @@ abstract class _PostDraft extends PostDraft {
   String get title;
   @override
   String get body;
-
-  /// A API exige um autor; sem login, usamos um usuário fixo.
   @override
   int get userId;
 

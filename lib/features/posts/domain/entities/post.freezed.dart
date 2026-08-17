@@ -17,17 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Post {
-  /// Identidade estável dentro do app (`remote-1`, `local-<uuid>`).
   String get id => throw _privateConstructorUsedError;
   int get userId => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get body => throw _privateConstructorUsedError;
   PostOrigin get origin => throw _privateConstructorUsedError;
-
-  /// Quando entrou no app. Ordena a lista e é o que a API não nos dá.
   DateTime get createdAt => throw _privateConstructorUsedError;
-
-  /// `id` devolvido pela API. Nulo enquanto o post só existe localmente.
   int? get remoteId => throw _privateConstructorUsedError;
 
   /// Create a copy of Post
@@ -198,7 +193,6 @@ class _$PostImpl extends _Post {
     this.remoteId,
   }) : super._();
 
-  /// Identidade estável dentro do app (`remote-1`, `local-<uuid>`).
   @override
   final String id;
   @override
@@ -209,12 +203,8 @@ class _$PostImpl extends _Post {
   final String body;
   @override
   final PostOrigin origin;
-
-  /// Quando entrou no app. Ordena a lista e é o que a API não nos dá.
   @override
   final DateTime createdAt;
-
-  /// `id` devolvido pela API. Nulo enquanto o post só existe localmente.
   @override
   final int? remoteId;
 
@@ -272,7 +262,6 @@ abstract class _Post extends Post {
   }) = _$PostImpl;
   const _Post._() : super._();
 
-  /// Identidade estável dentro do app (`remote-1`, `local-<uuid>`).
   @override
   String get id;
   @override
@@ -283,12 +272,8 @@ abstract class _Post extends Post {
   String get body;
   @override
   PostOrigin get origin;
-
-  /// Quando entrou no app. Ordena a lista e é o que a API não nos dá.
   @override
   DateTime get createdAt;
-
-  /// `id` devolvido pela API. Nulo enquanto o post só existe localmente.
   @override
   int? get remoteId;
 

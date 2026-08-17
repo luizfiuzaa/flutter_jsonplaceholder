@@ -193,12 +193,10 @@ class $PostRowsTable extends PostRows with TableInfo<$PostRowsTable, PostRow> {
 
 class PostRow extends DataClass implements Insertable<PostRow> {
   final String id;
-
   final int? remoteId;
   final int userId;
   final String title;
   final String body;
-
   final PostOrigin origin;
   final DateTime createdAt;
   const PostRow({

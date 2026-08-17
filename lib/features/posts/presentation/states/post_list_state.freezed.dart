@@ -451,12 +451,9 @@ class _$PostListLoadedImpl extends PostListLoaded {
     return EqualUnmodifiableListView(_posts);
   }
 
-  /// Recarregando por cima de dados já visíveis (pull-to-refresh).
   @override
   @JsonKey()
   final bool isRefreshing;
-
-  /// Preenchido quando os dados vieram do cache após a rede falhar.
   @override
   final Failure? staleFailure;
 
@@ -595,11 +592,7 @@ abstract class PostListLoaded extends PostListState {
   const PostListLoaded._() : super._();
 
   List<Post> get posts;
-
-  /// Recarregando por cima de dados já visíveis (pull-to-refresh).
   bool get isRefreshing;
-
-  /// Preenchido quando os dados vieram do cache após a rede falhar.
   Failure? get staleFailure;
 
   /// Create a copy of PostListState
