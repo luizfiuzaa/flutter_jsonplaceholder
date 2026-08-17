@@ -20,7 +20,6 @@ class DriftPostLocalDataSource implements PostLocalDataSource {
 
   @override
   Future<List<Post>> readAll() async {
-
     final localRows =
         await (_db.select(_db.postRows)
               ..where((row) => row.origin.equalsValue(PostOrigin.local))

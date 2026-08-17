@@ -1,4 +1,3 @@
-
 class RemoteParsingException implements Exception {
   const RemoteParsingException(this.details);
 

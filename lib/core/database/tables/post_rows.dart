@@ -14,7 +14,6 @@ class PostRows extends Table {
 
   TextColumn get body => text()();
 
-
   TextColumn get origin => textEnum<PostOrigin>()();
 
   DateTimeColumn get createdAt => dateTime()();

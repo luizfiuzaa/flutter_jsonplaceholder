@@ -46,7 +46,10 @@ void main() {
     await tester.tap(clearButton());
     await tester.pump();
 
-    expect(tester.widget<TextField>(find.byType(TextField)).controller?.text, '');
+    expect(
+      tester.widget<TextField>(find.byType(TextField)).controller?.text,
+      '',
+    );
     expect(changes, ['flu', '']);
     expect(clearButton(), findsNothing);
   });

@@ -5,10 +5,7 @@ import 'post.dart';
 
 part 'post_feed.freezed.dart';
 
-enum PostFeedSource {
-  network,
-  cache,
-}
+enum PostFeedSource { network, cache }
 
 @freezed
 class PostFeed with _$PostFeed {
