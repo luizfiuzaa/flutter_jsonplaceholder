@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FLUTTER_VERSION: "3.44.7"
+
+jobs:
+  validate:
+    name: Formatação, análise e testes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+
+      - name: Instalar dependências
+        run: flutter pub get
+
+      - name: Gerar código (freezed / json_serializable / drift)
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      # O código gerado é versionado. Se o build produzir algo diferente do que
+      # está commitado, o repositório está fora de sincronia com as fontes.
+      - name: Conferir se o código gerado está atualizado
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::Código gerado desatualizado. Rode 'dart run build_runner build --delete-conflicting-outputs' e commite o resultado."
+            git status --porcelain
+            git diff
+            exit 1
+          fi
+
+      - name: Verificar formatação
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Análise estática
+        run: flutter analyze --fatal-infos
+
+      - name: Testes com cobertura
+        run: flutter test --coverage
+
+      - name: Publicar relatório de cobertura
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage/lcov.info
+          if-no-files-found: error

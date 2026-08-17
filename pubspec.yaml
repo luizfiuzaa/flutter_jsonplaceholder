@@ -25,6 +25,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  mocktail: ^1.0.4
   build_runner: ^2.4.13
   freezed: ^2.5.7
   json_serializable: ^6.8.0
